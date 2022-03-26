@@ -25,7 +25,7 @@ class OrderController extends Controller
         $orders = Order::with('products')->where('user_id', $id)->get();
 
         return response()->json([
-            "status" => 1,
+            "status" => true,
             "message" => "All orders for $name",
             "data" => $orders
         ]);
@@ -68,7 +68,7 @@ class OrderController extends Controller
        
 
         return response()->json([
-            "status" => 1,
+            "status" => true,
             "message" => "Order created succesfully",
             "data" => $order
         ], 201);
