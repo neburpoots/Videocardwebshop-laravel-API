@@ -31,6 +31,42 @@ class OrderController extends Controller
         ]);
     }
 
+    
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function show($orderId)
+    {
+        if (Order::where([
+            "id" => $orderId
+        ])->exists()) {
+
+            $order = Order::with('products')->where('id', $orderId)->first();
+
+            if($order->user_id != auth()->user()->id) {
+                return response()->json([
+                    "status" => false,
+                    "message" => "Invalid id for order",
+                ], 403);
+            }
+
+            return response()->json([
+                "status" => true,
+                "message" => "Order with id $orderId found",
+                "data" => $order
+            ]);
+        } else {
+
+            return response()->json([
+                "status" => false,
+                "message" => "Product doesn't exist"
+            ], 404);
+        }
+    }
+
 
             /**
      * Store a newly created resource in storage.

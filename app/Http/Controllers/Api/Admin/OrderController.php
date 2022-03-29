@@ -31,7 +31,7 @@ class OrderController extends Controller
         /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function destroy($order_id)

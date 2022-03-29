@@ -24,7 +24,7 @@ Route::post("register", [UserController::class, "register"]);
 Route::post("login", [UserController::class, "login"]);
 Route::get('courses', [CourseController::class, "all"]);
 Route::get('products', [ProductController::class, "index"]);
-
+Route::post('refresh', [UserController::class, 'refreshWithToken']);
 
 Route::group(["middleware" => ["auth:api"]], function() {
 
@@ -59,6 +59,7 @@ Route::group(["middleware" => ["auth:api"]], function() {
 
         Route::controller(OrderController::class)->group(function () {
             Route::get('/orders', 'index');
+            Route::get('/orders/{id}', 'show');
             Route::post('/orders', 'store');
         });
     });
@@ -66,8 +67,6 @@ Route::group(["middleware" => ["auth:api"]], function() {
     //ROUTES FOR ALL LOGGEDIN USERS
     Route::get("profile", [UserController::class, "profile"]);
     Route::get("logout", [UserController::class, "logout"]);
-    Route::post('refresh', [UserController::class, 'refresh']);
-
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
