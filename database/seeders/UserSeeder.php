@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Ruben Stoop',
-            'email' => 'neburpoots@gmail.com',
+            'email' => 'neburpoots@test.com',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password' => Hash::make('Welkom!'),
             'is_admin' => false,
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Mark de Haan',
-            'email' => 'mark@gmail.com',
+            'email' => 'mark@test.com',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password' => Hash::make('Welkom!'),
             'is_admin' => true,
