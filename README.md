@@ -3,8 +3,8 @@
 This is a RESTFUL laravel 8 api.
 
 ## Technicals
-This api makes use of 200, 201, 400, 401, 403, 405, 422 and 500 status codes.
-The api has GET/POST/PUT/DELETE points
+This api makes use of 200, 201, 400, 401, 403, 405, 422 and 500 status codes. <br/>
+The api has GET/POST/PUT/DELETE points. <br/>
 The orderoverview for admins makes use of pagination.
 
 #### Authentication
