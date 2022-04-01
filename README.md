@@ -30,5 +30,7 @@ Password: Welkom!
 5. run: php artisan migrate:fresh --seed to seed the database
 6. run application with: php aritisan serve
 
+### env file should already exist upon cloning
+
 ## Front-end application
 Git: https://github.com/neburpoots/Vue-3-webshop-front-end
