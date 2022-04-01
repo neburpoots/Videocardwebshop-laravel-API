@@ -11,6 +11,17 @@ The orderoverview for admins makes use of pagination.
 Uses the tymon library for handling jwt tokens.
 Has custom functionality for handling refresh tokens.
 
+<br/><br/>
+The seeded users are:
+
+Admin:
+Email: mark@test.com
+Password: Welkom!
+
+Normal user:
+Email: neburpoots@test.com
+Password: Welkom!
+
 ## Setup
 1. clone repository
 2. run composer install
