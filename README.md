@@ -8,8 +8,8 @@ The api has GET/POST/PUT/DELETE points. <br/>
 The orderoverview for admins makes use of pagination.
 
 #### Authentication
-Uses the tymon library for handling jwt tokens.
-Has custom functionality for handling refresh tokens.
+Uses the tymon library for handling jwt tokens. <br/>
+The application has custom functionality for handling refresh tokens.
 
 <br/><br/>
 The seeded users are:
