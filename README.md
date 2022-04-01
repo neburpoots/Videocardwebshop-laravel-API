@@ -12,6 +12,12 @@ Uses the tymon library for handling jwt tokens.
 Has custom functionality for handling refresh tokens.
 
 ## Setup
+1. clone repository
+2. run composer install
+3. create database
+4. change env file to the created database
+5. run: php artisan migrate:fresh --seed to seed the database
+6. run application with: php aritisan serve
 
 ## Front-end application
 Git: https://github.com/neburpoots/Vue-3-webshop-front-end
