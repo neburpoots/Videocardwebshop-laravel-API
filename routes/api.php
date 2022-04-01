@@ -36,6 +36,7 @@ Route::group(["middleware" => ["auth:api"]], function() {
     ], function() {
         Route::controller(\App\Http\Controllers\Api\Admin\ProductController::class)->group(function () {
             Route::get('/products', 'index');
+            Route::post('/products/imageUpload', 'imageUpload');
             Route::post('/products', 'store');
             Route::get('/products/{id}', 'show');
             Route::put('/products/{id}', 'update');
@@ -44,6 +45,7 @@ Route::group(["middleware" => ["auth:api"]], function() {
 
         Route::controller(\App\Http\Controllers\Api\Admin\OrderController::class)->group(function () {
             Route::get('/orders', 'index');
+            Route::get('/orders/{id}', 'show');
             Route::delete('/orders/{id}', 'destroy');
         });
     });

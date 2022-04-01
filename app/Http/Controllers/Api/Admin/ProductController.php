@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use CloudinaryLabs\CloudinaryLaravel\MediaAlly;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
@@ -32,15 +36,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required",
             "image" => "required",
-            "price" => "required"
+            "product" => "required",
         ]);
 
+        $image = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+       
+        $product = json_decode($request->input('product'));
+
+        $name = $product->name;
+        $price = $product->price;
+
+
         $product = new Product();
-        $product->name = $request->name;
-        $product->image = $request->image;
-        $product->price = $request->price;
+        $product->name = $name;
+        $product->image = $image;
+        $product->price = $price;
 
         $product->save();
 
@@ -128,6 +139,7 @@ class ProductController extends Controller
         ])->exists()) {
 
             $product = Product::find($product_id);
+            DB::table('order_product')->where('product_id', $product->id)->delete();
 
             $product->delete();
 
@@ -142,6 +154,20 @@ class ProductController extends Controller
                 "message" => "Product with id $product_id doesn't exist."
             ], 404);
         }
+    }
+
+    public function imageUpload(Request $request) {
+        $request->validate([
+            "image" => "required",
+        ]);
+
+        $image = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        
+        return response()->json([
+            "status" => true,
+            "message" => "Image has been uploaded",
+            "data" => $image
+        ], 201);
     }
 }
 

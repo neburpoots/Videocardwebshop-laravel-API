@@ -87,6 +87,7 @@ class OrderController extends Controller
         $order->order_date = Carbon::now()->format('Y-m-d H:i:s');
 
         if($order->save()) {
+
             $products = $request->products;
 
             if($this->checkOrderLine($products)) {
@@ -112,12 +113,11 @@ class OrderController extends Controller
 
     public function checkOrderLine(Array $products) : bool 
     {
-
         foreach($products as $product) {
             if(!isset($product["product_id"]) || !isset($product['quantity'])) {
                 return false;
             }
-            if (!Product::where(["id" => $product['product_id']])->exists()) {
+            if (Product::where('id', $product['product_id'])->doesntExist()) {
                 return false;
             }
         }

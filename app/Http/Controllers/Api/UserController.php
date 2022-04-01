@@ -10,6 +10,7 @@ use App\Models\JWTCodec;
 use App\Models\RefreshToken;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -29,6 +30,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->email_verified_at = Carbon::now()->format('Y-m-d H:i:s');
         $user->password = bcrypt($request->password);
         
         $user->save();
