@@ -28,7 +28,7 @@ Password: Welkom!
 3. create database
 4. change env file to the created database
 5. run: php artisan migrate:fresh --seed to seed the database
-6. run application with: php aritisan serve
+6. run application with: php artisan serve
 
 ### env file should already exist upon cloning
 
